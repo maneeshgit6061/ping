@@ -1,2 +1,12 @@
+- name: Venkat Test connectivity 
+  hosts: all
+  gather_facts: false
 
-$$$$$
+  tasks:
+    - name: Ping hosts
+      ansible.builtin.ping:
+      register: ping_result
+
+    - name: Print ping output
+      ansible.builtin.debug:
+        msg: "Host {{ inventory_hostname }} ping result: {{ ping_result.ping }}"
